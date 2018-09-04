@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,8 +28,11 @@ public class Cliente implements Serializable {
 	private Integer id;
 	private String nome;
 	private String email;
+	
+	@Column(updatable=false)
 	private String cpfOuCnpj;
-
+	
+	@Column(updatable=false)
 	private Integer tipoCliente;
 
 	@OneToMany(mappedBy = "cliente")
@@ -52,7 +56,7 @@ public class Cliente implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipoCliente = tipoCliente.getCod();
+		this.tipoCliente = tipoCliente == null ? null : tipoCliente.getCod();
 	}
 
 	public Integer getId() {
