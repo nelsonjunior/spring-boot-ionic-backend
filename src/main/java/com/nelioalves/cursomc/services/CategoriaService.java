@@ -34,8 +34,13 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria categoria = find(obj.getId());
+		updateData(categoria, obj);
+		return repo.save(categoria);
+	}
+
+	private void updateData(Categoria categoria, Categoria obj) {
+		categoria.setNome(obj.getNome());
 	}
 
 	public void delete(Integer id) {

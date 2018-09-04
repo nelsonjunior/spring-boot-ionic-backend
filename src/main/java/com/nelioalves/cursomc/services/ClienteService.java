@@ -29,9 +29,9 @@ public class ClienteService {
 	}
 	
 	public Cliente update(Cliente obj) {
-		Cliente clienteOld = find(obj.getId());
-		updateData(clienteOld, obj);
-		return repo.save(obj);
+		Cliente cliente = find(obj.getId());
+		updateData(cliente, obj);
+		return repo.save(cliente);
 	}
 
 	public void delete(Integer id) {
@@ -57,9 +57,8 @@ public class ClienteService {
 		return cliente;
 	}
 	
-	private void updateData(Cliente clienteOld, Cliente obj) {
-		obj.setTipoCliente(clienteOld.getTipoCliente());
-		obj.setCpfOuCnpj(clienteOld.getCpfOuCnpj());
-		
+	private void updateData(Cliente cliente, Cliente obj) {
+		cliente.setNome(obj.getNome());
+		cliente.setEmail(obj.getEmail());
 	}
 }
