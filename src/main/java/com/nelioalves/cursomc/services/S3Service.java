@@ -18,6 +18,7 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.nelioalves.cursomc.exceptions.FileException;
 
 @Service
 public class S3Service {
@@ -41,7 +42,7 @@ public class S3Service {
 		
 		} catch (IOException e) {
 			LOG.info("AmazonClientException: " + e.getMessage());
-			throw new RuntimeException("Erro IOException: " + e.getMessage());
+			throw new FileException("Erro IOException: " + e.getMessage());
 		}
 	}
 
@@ -61,7 +62,7 @@ public class S3Service {
 
 		} catch (URISyntaxException e) {
 			LOG.info("URISyntaxException: " + e.getMessage());
-			throw new RuntimeException("Erro ao converter URL para URI");
+			throw new FileException("Erro ao converter URL para URI");
 		}
 	}
 	
